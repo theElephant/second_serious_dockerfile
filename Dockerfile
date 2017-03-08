@@ -1,18 +1,19 @@
 FROM centos:6.6
 
-RUN yum -y install wget
-RUN yum history sync
+RUN yum -y install wget || yum -y install wget
 	#RUN yum -y --skip-broken --exclude=iputils  update  && yum clean all
-RUN yum -y install which 
-RUN yum -y install sudo 
+RUN yum -y install which || yum -y install which 
+RUN yum -y install sudo  || yum -y install sudo 
 RUN yum -y install openssh-clients || yum -y install openssh-clients
-RUN yum -y install openssh-server 
+RUN yum -y install openssh-server || yum -y install openssh-clients
 	
-#RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
-#RUN rpm -ivh epel-release-latest-6.noarch.rpm
+RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+RUN rpm -ivh epel-release-latest-6.noarch.rpm
 
-#RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo -O /etc/yum.repos.d/devtools-2.repo
-#RUN yum -y install devtoolset-2-gcc devtoolset-2-binutils && yum clean all
+RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo -O /etc/yum.repos.d/devtools-2.repo
+RUN yum -y install devtoolset-2-gcc devtoolset-2-binutils 
+
+RUN yum clean all
 
 
 #RUN yum -y groupinstall 'Development Tools' && yum clean all
