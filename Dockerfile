@@ -1,11 +1,8 @@
 FROM centos:6.6
 
-RUN yum -y update 
-
 RUN yum -y install wget 
-RUN yum -y install which 
-RUN yum -y install sudo 
-RUN yum -y install openssh-server openssh-clients
+RUN yum -y update 
+RUN yum -y install which sudo openssh-server openssh-clients
 	
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 RUN rpm -ivh epel-release-latest-6.noarch.rpm
@@ -26,6 +23,8 @@ RUN yum -y install \
 	libjpeg-turbo-devel leveldb-devel openblas-devel  \
     snappy-devel opencv-devel boost-devel gflags-devel glog-devel  \
     lmdb-devel libpng-devel freetype-devel bc
+    
+RUN yum clean all
 
 RUN useradd -ms /bin/bash builder
 RUN mkdir -p /home/builder/.ssh
