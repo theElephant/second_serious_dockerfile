@@ -1,30 +1,28 @@
 FROM centos:6.6
 
-RUN yum -y install wget 
-#RUN yum -y update 
-RUN yum -y install which sudo openssh-server openssh-clients
+RUN yum -y install wget && yum clean all
+RUN yum -y update && yum clean all
+RUN yum -y install which sudo openssh-server openssh-clients && yum clean all
 	
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 RUN rpm -ivh epel-release-latest-6.noarch.rpm
 
 RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo -O /etc/yum.repos.d/devtools-2.repo
-RUN yum -y install devtoolset-2-gcc devtoolset-2-binutils
+RUN yum -y install devtoolset-2-gcc devtoolset-2-binutils && yum clean all
 
 
-RUN yum -y groupinstall 'Development Tools'
+RUN yum -y groupinstall 'Development Tools' && yum clean all
 
-RUN yum -y install openmpi-devel cmake redhat-lsb-core
+RUN yum -y install openmpi-devel cmake redhat-lsb-core && yum clean all
 
 RUN yum -y install \
 	libXi-devel libXmu-devel libXrandr-devel  \
-    libXinerama-devel libXcursor-devel mesa-libGLU-devel mesa-libGL-devel libX11
+    libXinerama-devel libXcursor-devel mesa-libGLU-devel mesa-libGL-devel libX11 && yum clean all
     
 RUN yum -y install \
 	libjpeg-turbo-devel leveldb-devel openblas-devel  \
     snappy-devel opencv-devel boost-devel gflags-devel glog-devel  \
-    lmdb-devel libpng-devel freetype-devel bc
-    
-#RUN yum clean all
+    lmdb-devel libpng-devel freetype-devel bc && yum clean all
 
 RUN useradd -ms /bin/bash builder
 RUN mkdir -p /home/builder/.ssh
