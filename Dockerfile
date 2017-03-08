@@ -1,7 +1,7 @@
 FROM centos:6.6
 
 RUN yum -y install wget && yum clean all
-RUN yum -y update && yum clean all
+RUN yum -y update --skip-broken && yum clean all
 RUN yum -y install which sudo openssh-server openssh-clients && yum clean all
 	
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
