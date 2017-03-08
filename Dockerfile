@@ -5,7 +5,8 @@ RUN yum history sync
 	#RUN yum -y --skip-broken --exclude=iputils  update  && yum clean all
 RUN yum -y install which 
 RUN yum -y install sudo 
-RUN yum -y install openssh-clients openssh-server 
+RUN yum -y install openssh-clients 
+RUN yum -y install openssh-server 
 	
 #RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 #RUN rpm -ivh epel-release-latest-6.noarch.rpm
