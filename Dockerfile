@@ -3,7 +3,7 @@ FROM centos:6.6
 # Need this patch to overcome "Rpmdb checksum is invalid: dCDPT(pkg checksums)" bug
 RUN yum install -y yum-plugin-ovl
 RUN yum -y update
-RUN yum install ntp
+RUN yum -y install ntp
 
 # Basic  packages
 RUN yum -y install wget which sudo openssh-clients openssh-server 
