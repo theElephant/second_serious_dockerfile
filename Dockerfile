@@ -2,6 +2,8 @@ FROM centos:6.6
 
 # Need this patch to overcome "Rpmdb checksum is invalid: dCDPT(pkg checksums)" bug
 RUN yum install -y yum-plugin-ovl
+RUN yum -y update
+RUN yum install ntp
 
 # Basic  packages
 RUN yum -y install wget which sudo openssh-clients openssh-server 
@@ -43,6 +45,7 @@ RUN echo "export PATH=$PATH:/usr/lib64/openmpi/bin" >> /home/builder/.bashrc
 
 RUN usermod -aG wheel builder
 RUN sed -i 's/^#[ \t]*%wheel[ \t]*ALL=(ALL)[ \t]*NOPASSWD:[ \t]*ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+
 
 USER builder
 WORKDIR /home/builder
