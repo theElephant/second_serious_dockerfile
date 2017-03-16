@@ -38,6 +38,13 @@ RUN yum clean all
 RUN useradd -ms /bin/bash builder
 RUN mkdir -p /home/builder/.ssh
 RUN chmod 700 /home/builder/.ssh
+RUN mkdir -p /home/builder/rpmbuild/RPMS
+RUN mkdir -p /home/builder/rpmbuild/RPMS/BUILD
+RUN mkdir -p /home/builder/rpmbuild/RPMS/BUILDROOT
+RUN mkdir -p /home/builder/rpmbuild/RPMS/RPMS
+RUN mkdir -p /home/builder/rpmbuild/RPMS/SOURCES
+RUN mkdir -p /home/builder/rpmbuild/RPMS/SPECS
+RUN mkdir -p /home/builder/rpmbuild/RPMS/SRPMS
 RUN chown -R builder:builder /home/builder
 
 RUN echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/openmpi/lib" > /home/builder/.bashrc
