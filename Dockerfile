@@ -14,7 +14,7 @@ RUN rpm -ivh epel-release-latest-6.noarch.rpm
 
 # Devtoolset-2 to get gcc-4.8
 RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo -O /etc/yum.repos.d/devtools-2.repo
-RUN yum -y install devtoolset-2-gcc devtoolset-2-binutils 
+RUN yum -y install devtoolset-2-gcc devtoolset-2-gcc-c++ devtoolset-2-binutils 
 
 # Development tools
 RUN yum -y groupinstall 'Development Tools' && yum clean all
