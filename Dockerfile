@@ -18,21 +18,22 @@ RUN yum -y install devtoolset-2-gcc devtoolset-2-gcc-c++ devtoolset-2-binutils
 
 # Development tools
 RUN yum -y groupinstall 'Development Tools' && yum clean all
-RUN yum clean all
+
 
 # Openmpi and headers
 RUN yum -y install openmpi-devel cmake redhat-lsb-core
-RUN yum clean all
+
 
 RUN yum -y install \
 	libXi-devel libXmu-devel libXrandr-devel  \
     libXinerama-devel libXcursor-devel mesa-libGLU-devel mesa-libGL-devel libX11
-RUN yum clean all
+
     
-RUN yum -y install \
-	libjpeg-turbo-devel leveldb-devel openblas-devel  \
-    snappy-devel opencv-devel boost-devel gflags-devel glog-devel  \
-    lmdb-devel libpng-devel
+#RUN yum -y install \
+#	leveldb-devel openblas-devel  \
+#    snappy-devel opencv-devel gflags-devel glog-devel  \
+    
+    
 RUN yum clean all
 
 RUN useradd -ms /bin/bash builder
