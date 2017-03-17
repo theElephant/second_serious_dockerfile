@@ -28,12 +28,7 @@ RUN yum -y install \
 	libXi-devel libXmu-devel libXrandr-devel  \
     libXinerama-devel libXcursor-devel mesa-libGLU-devel mesa-libGL-devel libX11
 
-    
-#RUN yum -y install \
-#	leveldb-devel openblas-devel  \
-#    snappy-devel opencv-devel gflags-devel glog-devel  \
-    
-    
+  
 RUN yum clean all
 
 RUN useradd -ms /bin/bash builder
